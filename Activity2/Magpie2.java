@@ -36,7 +36,11 @@ public class Magpie2
 
 		System.out.println(statement);
 
-		if (statement.indexOf("no ") >= 0)
+		if (statement.length()<2) {
+			response="Please say something, silence is rude.";
+		}
+
+		else if (statement.indexOf("NO ") >= 0)
 		{
 			response = "Why so negative?";
 		}
@@ -53,6 +57,9 @@ public class Magpie2
 			response = "Tell me more about your dog/dog's";
 		} else if (statement.indexOf("HI ") >= 0){ //Takes users input and sees if it contains phrase "hi" and responds if true
 			response = "Didn't we greet already";
+		}
+		  else if (statement.contains ("MR. SMITH ")){
+			  response = "he sounds like a good teacher.";
 		}
 		else {
 			response = getRandomResponse();
