@@ -30,38 +30,32 @@ public class Magpie2
 	 */
 	public String getResponse(String statement)
 	{
-		int keyword = 0;
 		statement += " ";
 		statement = statement.toUpperCase();
 		String response = "";
 
+		System.out.println(statement);
+
 		if (statement.indexOf("no ") >= 0)
 		{
-			keyword++;
 			response = "Why so negative?";
 		}
-		else if (statement.indexOf("mother ") >= 0
-				|| statement.indexOf("father ") >= 0
-				|| statement.indexOf("sister ") >= 0
-				|| statement.indexOf("brother ") >= 0)
+		else if (statement.indexOf("MOTHER ") >= 0
+				|| statement.indexOf("FATHER ") >= 0
+				|| statement.indexOf("SISTER ") >= 0
+				|| statement.indexOf("BROTHER ") >= 0)
 		{
-			keyword++;
 			response = "Tell me more about your family.";
 		}
-		else if ((statement.indexOf("dog ") >= 0) || (statement.indexOf("cat ") >= 0)){ //Takes users input and sees if it contains phrases "cat" or "dog" then responds
-			keyword++;
-			response = "Tell me more about your pets";
-		}
-		else if (statement.indexOf("hi ") >= 0){ //Takes users input and sees if it contains phrase "hi" and responds 
-			keyword++;
+		else if (statement.indexOf("CAT ") >= 0){ //Takes users input and sees if it contains phrase "cat" then responds if true
+			response = "Tell me more about your cat/cat's";
+		} else if (statement.indexOf("DOG ") >= 0) {//Takes users input and sees if it contains phrase "dog" then responds if true
+			response = "Tell me more about your dog/dog's";
+		} else if (statement.indexOf("HI ") >= 0){ //Takes users input and sees if it contains phrase "hi" and responds if true
 			response = "Didn't we greet already";
 		}
-		else
-		{
+		else {
 			response = getRandomResponse();
-		}
-		if (keyword > 1){ // checks inputs and sees if it hase multiple keywords and asks to dumb down responce
-			response = "May you please try to make your sentence a little less complex? im not understanding.";
 		}
 		return response;
 	}
